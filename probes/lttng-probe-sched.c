@@ -29,6 +29,9 @@
  */
 #include <trace/events/sched.h>
 
+#ifdef CONFIG_ATLAS_TRACE
+#include <trace/events/atlas.h>
+#endif
 #include <wrapper/tracepoint.h>
 
 /*

@@ -12,6 +12,11 @@ obj-$(CONFIG_LTTNG) += lttng-probe-module.o
 obj-$(CONFIG_LTTNG) += lttng-probe-power.o
 obj-$(CONFIG_LTTNG) += lttng-probe-statedump.o
 
+ifneq ($(CONFIG_ATLAS_TRACE),)
+  CFLAGS_lttng-probe-atlas.o += -I$(srctree)/kernel
+  obj-$(CONFIG_LTTNG) += lttng-probe-atlas.o
+endif # CONFIG_ATLAS_TRACE
+
 ifneq ($(CONFIG_KVM),)
   obj-$(CONFIG_LTTNG) += lttng-probe-kvm.o
   ifneq ($(CONFIG_X86),)
